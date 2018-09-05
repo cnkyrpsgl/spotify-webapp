@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "en" class="no-js"> 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Spotify Companion</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm fixed-top">
+        <a class="navbar-brand" href="#">
+            <img src="{{user_img}}" alt="avatar" style="width:40px;">
+        </a>
+        
+        <ul class="navbar-nav">
+            <li class="nav-item">
+            <a class="nav-link" href="#latest">Latest Albums</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Top Artists
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#top-artists-long">Long Term</a>
+                    <a class="dropdown-item" href="#top-artists-medium">Medium Term</a>
+                    <a class="dropdown-item" href="#top-artists-short">Short Term</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Top Tracks
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#top-tracks-long">Long Term</a>
+                    <a class="dropdown-item" href="#top-tracks-medium">Medium Term</a>
+                    <a class="dropdown-item" href="#top-tracks-short">Short Term</a>
+                </div>
+            </li>
+        </ul>
+        <span class="navbar-text">
+            Logged in as {{user_name}}
+        </span>
+        </nav>
+        <div>
+            <hr class="art-h">
+            <header>
+                <h1 class="top-h" id="latest">LATEST ALBUM OF FAVOURITE ARTISTS</h1>
+            </header>
+            <hr class="art-h">
+            <section>
+                {% for artist, album, date, album_img, album_link in artists_info %}
+                <div class="container">
+                    <div class="content">
+                        <a href="{{album_link}}" target="_blank">
+                        <div class="content-overlay"></div>
+                        <img class="content-image" src="{{album_img}}">
+                        <div class="content-details">
+                            <h3 class="content-title">{{artist}} {{album}}</h3>
+                            <p class="content-text">{{date}}</p>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </section>
+        </div>
+        <div>
+            <hr class="art-h">
+            <header>
+                <h1 class="top-h" id="top-artists-long">YOUR TOP ARTISTS ON SEVERAL YEARS</h1>
+            </header>
+            <hr class="art-h">
+            <section>
+                {% for artist, artist_img, artist_link in top_artists_l %}
+                <div class="container">
+                    <div class="content">
+                        <a href="{{artist_link}}" target="_blank">
+                        <div class="content-overlay"></div>
+                        <img class="content-image" src="{{artist_img}}">
+                        <div class="content-details">
+                            <h3 class="content-title">{{artist}}</h3>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </section>
+        </div>
+        <div>
+            <hr class="art-h">
+            <header>
+                <h1 class="top-h" id="top-artists-medium">YOUR TOP ARTISTS ON 6 MONTHS</h1>
+            </header>
+            <hr class="art-h">
+            <section>
+                {% for artist, artist_img, artist_link in top_artists_m %}
+                <div class="container">
+                    <div class="content">
+                        <a href="{{artist_link}}" target="_blank">
+                        <div class="content-overlay"></div>
+                        <img class="content-image" src="{{artist_img}}">
+                        <div class="content-details">
+                            <h3 class="content-title">{{artist}}</h3>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </section>
+        </div>
+        <div>
+            <hr class="art-h">
+            <header>
+                <h1 class="top-h" id="top-artists-short">YOUR TOP ARTISTS ON 4 WEEKS</h1>
+            </header>
+            <hr class="art-h">
+            <section>
+                {% for artist, artist_img, artist_link in top_artists_s %}
+                <div class="container">
+                    <div class="content">
+                        <a href="{{artist_link}}" target="_blank">
+                        <div class="content-overlay"></div>
+                        <img class="content-image" src="{{artist_img}}">
+                        <div class="content-details">
+                            <h3 class="content-title">{{artist}}</h3>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </section>
+        </div>
+        <div>
+            <hr>
+            <header>
+                <h1 id="top-tracks-long">YOUR TOP TRACKS ON SEVERAL YEARS</h1>
+            </header>
+            <section>
+                {% for title, artists, album, track_link in top_tracks_l %}
+                <a href="{{track_link}}" target="_blank">
+                    <hr>
+                    <p>{{title}} //</p>
+                    {% for artist in artists %}
+                        <p>{{artist}}</p>
+                    {% endfor %}
+                    <p>// {{album}}</p>
+                </a>
+                {% endfor %}
+            </section>
+        </div>
+        <div>
+            <hr>
+            <header>
+                <h1 id="top-tracks-medium">YOUR TOP TRACKS ON 6 MONTHS</h1>
+            </header>
+            <section>
+                {% for title, artists, album, track_link in top_tracks_m %}
+                <a href="{{track_link}}" target="_blank">
+                    <hr>
+                    <p>{{title}} //</p>
+                    {% for artist in artists %}
+                        <p>{{artist}}</p>
+                    {% endfor %}
+                    <p>// {{album}}</p>
+                </a>
+                {% endfor %}
+            </section>
+        </div>
+        <div>
+            <hr>
+            <header>
+                <h1 id="top-tracks-short">YOUR TOP TRACKS ON 4 WEEKS</h1>
+            </header>
+            <section>
+                {% for title, artists, album, track_link in top_tracks_s %}
+                <a href="{{track_link}}" target="_blank">
+                    <hr>
+                    <p>{{title}} //</p>
+                    {% for artist in artists %}
+                        <p>{{artist}} //</p>
+                    {% endfor %}
+                    <p> {{album}}</p>
+                </a>
+                {% endfor %}
+            </section>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </body>
+</html>

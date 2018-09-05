@@ -1,0 +1,50 @@
+body {
+    background-color: #202020;
+}
+.pr {
+    display:block;
+    margin:0 auto;
+    text-align: center;
+    vertical-align: middle;
+}
+h1 {
+    color:white;
+    margin-top: 15%;
+}
+form {
+    margin-top: 3%; 
+}
+#sub {
+    width: 13vw;
+    height: 7vh; 
+    color: white;
+    display:block;
+    margin:0 auto;
+    text-align: center;
+    vertical-align: middle;
+    background-color : #84bd00c4; 
+    border-color: #84bd00c4;
+    border-radius: 500px;
+    font-size: 16px;
+    line-height: 1.2;
+    padding: 8px 25px 6px;
+    border-width: 1px;
+    margin-top: 1%;
+    font-weight: 400;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+}
+#sub:hover {
+    background-color: white;
+    color: #84bd00c4;
+}
+input[type="text"], textarea {
+    color: white;
+    background-color : #84bd00c4; 
+    border-color: #84bd00c4; 
+  }
+p {
+    margin-top: 3%; 
+    color: red; 
+}
