@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '7)$$)#b@@()vxn#$=+rle7_a!xr(o=$7g4h^qii!zmf!p@5!w3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["spotifycompanion.pythonanywhere.com"]
 
 
 # Application definition
@@ -50,6 +50,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+X_FRAME_OPTIONS = 'DENY'
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+SECURE_BROWSER_XSS_FILTER  = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
 ROOT_URLCONF = 'mysite.urls'
 
 TEMPLATES = [
@@ -119,3 +125,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = "/home/spotifyCompanion/spotify-webapp/mysite/spotify"

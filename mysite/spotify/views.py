@@ -10,7 +10,7 @@ from . import affinity
 from . import user 
 
 def login(request):
-    return redirect("https://accounts.spotify.com/authorize?client_id=ecdb3082299245ddbda171266200cf56&redirect_uri=http://spotifycompanion.pythonanywhere.com/prompt/&scope=user-read-private user-read-email user-follow-read user-top-read&response_type=token&state=123")
+    return redirect("https://accounts.spotify.com/authorize?client_id=ecdb3082299245ddbda171266200cf56&redirect_uri=http://127.0.0.1:8000/prompt/&scope=user-read-private user-read-email user-follow-read user-top-read&response_type=token&state=123")
 
 def index(request):
     return render(request, "spotify/index.html")
